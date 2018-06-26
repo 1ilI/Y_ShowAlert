@@ -10,7 +10,7 @@
 
 * 普通的 Alert
 ```objc
-NSArray *actionTitle = @[@"确认",@"取消"];
+NSArray *actionTitle = @[@"取消",@"确认"];
 UIAlertController *alert = [UIAlertController alertWithTitle:@"标题 Title 🙃" message:@"消息 Message " actionsTitleArr:actionTitle alertAction:^(NSInteger actionIdx, UIAlertController *alertController) {
 
 }];
@@ -19,7 +19,7 @@ UIAlertController *alert = [UIAlertController alertWithTitle:@"标题 Title 🙃
 
 * 带有 TextField 的 Alert
 ```objc
-NSArray *actionTitle = @[@"确认",@"取消"];
+NSArray *actionTitle = @[@"取消",@"确认"];
 UIAlertController *alert = [UIAlertController alertWithTitle:@"标题 Title 🙃" message:@"消息 Message " actionsTitleArr:actionTitle alertAction:^(NSInteger actionIdx, UIAlertController *alertController) {
 
 }];
@@ -36,4 +36,4 @@ UIAlertController *alert = [UIAlertController alertWithTitle:@"标题 Title 🙃
 ## Example
 ![show](Show-Alert.gif)
 
-详细使用参见Example
+详细使用参见 Example
