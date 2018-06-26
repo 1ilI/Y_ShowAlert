@@ -33,4 +33,6 @@ UIAlertController *alert = [UIAlertController alertWithTitle:@"标题 Title 🙃
 [alert showAlert];
 ```
 
+## Example
+![show](Show-Alert.gif)
 详细使用参见Example
