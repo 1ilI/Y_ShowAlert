@@ -78,6 +78,10 @@ typedef UITextField *(^ObserverBlock)(UITextField *inputTextField);
     }];
 }
 
+- (void)showOnVC:(UIViewController *)currentVC {
+    [currentVC presentViewController:self animated:YES completion:nil];
+}
+
 - (void)showAlert {
     [[self getCurrentVC] presentViewController:self animated:YES completion:nil];
 }
@@ -88,24 +92,25 @@ typedef UITextField *(^ObserverBlock)(UITextField *inputTextField);
 
 //获取到当前的 ViewController
 -(UIViewController *)getCurrentVC {
-    UIViewController *result = nil;
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal) {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tempWindow in windows) {
-            if (tempWindow.windowLevel == UIWindowLevelNormal) {
-                window = tempWindow;
-                break;
-            }
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UIViewController *topViewController = [window rootViewController];
+    while (true) {
+        if (topViewController.presentedViewController) {
+            topViewController = topViewController.presentedViewController;
+        }
+        else if ([topViewController isKindOfClass:[UINavigationController class]] &&
+                 [(UINavigationController*)topViewController topViewController]) {
+            topViewController = [(UINavigationController *)topViewController topViewController];
+        }
+        else if ([topViewController isKindOfClass:[UITabBarController class]]) {
+            UITabBarController *tab = (UITabBarController *)topViewController;
+            topViewController = tab.selectedViewController;
+        }
+        else {
+            break;
         }
     }
-    UIView *frontView = [[window subviews] objectAtIndex:0];
-    id nextResponder = [frontView nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-        result = nextResponder;
-    else
-        result = window.rootViewController;
-    return result;
+    return topViewController;
 }
 
 - (void)dealloc {

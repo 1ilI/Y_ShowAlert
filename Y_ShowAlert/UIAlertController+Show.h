@@ -28,6 +28,12 @@
 - (void)addTextFieldWithConfiguration:(void (^ __nullable)(UITextField *textFieldConf))configuration observerTextFieldChanged:(void (^)(UITextField *textFieldObserver))observer;
 
 /**
+ 在指定VC上显示
+ @param currentVC 指定VC
+ */
+- (void)showOnVC:(UIViewController *)currentVC;
+
+/**
  在当前的 ViewController 中弹出 UIAlertController
  @param completed 弹出完成后的回调
  */
