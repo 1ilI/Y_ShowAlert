@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   #名称
   s.name         = "Y_ShowAlert"
   #版本
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   #简介
   s.summary      = "对 UIAlertController 的扩展，快速创建与展示 AlertController"
   #详介
